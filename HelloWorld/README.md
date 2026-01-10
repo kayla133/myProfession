@@ -27,8 +27,6 @@ To recreate the development environment, you need the following software and/or 
 I found these websites useful in developing this software:
 
 * Python 3.14.2 documentation https://docs.python.org/3/
-*
-*
 
 ## Future Work
 
