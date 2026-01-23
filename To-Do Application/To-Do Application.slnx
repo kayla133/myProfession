@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="To-Do Application/To-Do Application.vcxproj" Id="47e0c90f-b00a-4ff1-af68-0492f38620cb" />
+</Solution>
