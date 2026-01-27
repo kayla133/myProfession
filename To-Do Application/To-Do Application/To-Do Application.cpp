@@ -9,6 +9,7 @@
 #include <list>
 #include <string>
 #include <cstdlib>
+#include <fstream>
 
 using namespace std;
 
@@ -72,7 +73,38 @@ void complete() {
 
 }
 
+void saveToFile() {
+	//have list as the file that will be saved
+	ofstream outFile("tasks.txt");
+	if (outFile.is_open()) {
+		for (const string& task : toDo) {
+			outFile << task << endl;
+		}
+		outFile.close();
+		cout << "List saved to tasks.txt\n";
+	}
+	else {
+		cout << "Unable to open file for saving \n";
+	}
+}
 
+void loadFile() {
+	ifstream inFile("tasks.txt");
+	if (inFile.is_open()) {
+		toDo.clear();
+		string task;
+		while (getline(inFile, task)) {
+			if (!task.empty()) {
+				toDo.push_back(task);
+			}
+		}
+		inFile.close();
+		cout << "List loaded from tasks.txt\n";
+	}
+	else {
+		cout << "No save file found or unable to open\n";
+	}
+}
 
 
 
@@ -87,13 +119,13 @@ int main() {
 	
 	// this line reads what the user types.
 
-	while (choice != 4) {
+	while (choice != 6) {
 		cout << "1. Add Task \n";
 		cout << "2. Mark Task as Complete \n";
 		cout << "3. List Task \n";
-		//cout << "4. Save to File \n";
-		//cout << "5. Load File \n";
-		cout << "4. Quit Program \n";
+		cout << "4. Save to File \n";
+		cout << "5. Load File \n";
+		cout << "6. Quit Program \n";
 		cin >> choice;
 		system("cls");
 
@@ -114,13 +146,15 @@ int main() {
 
 		if (choice == 4) {
 			// save list
+			saveToFile();
 		}
 
 		if (choice == 5) {
 			// load lsit
+			loadFile();
 		}
 
-		if (choice == 4) {
+		if (choice == 6) {
 			// quit
 			cout << "See ya later!";
 		}
